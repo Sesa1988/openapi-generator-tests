@@ -14,3 +14,12 @@ npx @openapitools/openapi-generator-cli generate -i spec.yaml -g aspnetcore -o /
 ## API generation with test data (does also not work for different reasons)
 
 npx @openapitools/openapi-generator-cli generate -i dummy.yaml -g aspnetcore -o /api/ --additional-properties=aspnetCoreVersion=6.0,buildTarget=library,classModifier=abstract,generateBody=false,isLibrary=true,modelClassModifier=partial,operationModifier=abstract
+
+## Docker
+
+docker run --rm -it \
+    -v $PWD:/local openapitools/openapi-generator-cli generate \
+    -i /local/spec.yaml \
+    -g aspnetcore \
+    -o /local/out/aspnet \
+    --additional-properties=aspnetCoreVersion=6.0,buildTarget=library,classModifier=abstract,generateBody=false,isLibrary=true,modelClassModifier=partial,operationModifier=abstract
